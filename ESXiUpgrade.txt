@@ -1,0 +1,40 @@
+# Patchlevelupgrade eines ESXi Hosts
+
+# Das passende Patch-Paket herunterladen
+https://www.vmware.com/patchmgr/findPatchByReleaseName.portal
+
+Auf der Administrationsseite des Hosts den SSH Zugang freischalten.
+
+
+# Host in den Wartungszustand versetzen
+vim-cmd hostsvc/maintenance_mode_enter 
+
+das datastore findet sich unter 
+/vmfs/volumes/datastore1
+
+Das Patch Paket per SCP oder vSphere Client hochladen
+
+
+Verwenden Sie zum Deinstallieren oder Aktualisieren einer .zip -Datei die Option -d. 
+Verwenden Sie zum Deinstallieren oder Aktualisieren einer .vib -Datei die Option -v. 
+
+Update:
+
+    Unter Verwendung des lokalen Setups:
+
+    # esxcli software vib update -d "/vmfs/volumes/Datastore/DirectoryName/PatchName.zip"
+
+    Dabei ist PatchName.zip der Name der Patchdatei, die Sie in den Datenspeicher hochgeladen haben.
+	
+esxcli software vib update -d /vmfs/volumes/datastore1/patch/update-from-esxi5.5-5.5_update03.zip
+
+Installation Result
+   Message: The update completed successfully, but the system needs to be rebooted for the changes to be effective.
+   Reboot Required: true
+   VIBs Installed: VMware_bootbank_esx-base_5.5.0-3.71.3116895
+   VIBs Removed: VMware_bootbank_esx-base_5.5.0-3.68.3029944
+   VIBs Skipped: VMware_bootbank_ata-pata-amd_0.3.10-3vmw.550.0.0.1331820,...........
+   
+   
+   vim-cmd hostsvc/maintenance_mode_exit
+   

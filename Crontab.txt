@@ -1,0 +1,25 @@
+crontab -l //-- list
+crontab -e //-- edit
+
+*     *     *   *    *        command to be executed
+-     -     -   -    -
+|     |     |   |    |
+|     |     |   |    +----- day of week (0 - 6) (Sunday=0)
+|     |     |   +------- month (1 - 12)
+|     |     +--------- day of        month (1 - 31)
+|     +----------- hour (0 - 23)
++------------- min (0 - 59)
+
+// BSP aus der Praxis
+#### DOWNLOAD MAZ ####
+0 4 * * * /home/webdownload/get_MAZ1.sh > /dev/null 2>&1
+#### Sync Werftplan 2017 to transfer #####
+0,15,30,45 * * * * /home/webdownload/syncwerft.sh > /dev/null 2>&1
+#### Ping Time Check #############
+*/1 * * * * /home/pingtime/pingtime.sh
+
+
+#### Sync Werftplan 2017 to transfer #####
+# Neuer Wertordner
+# 0,15,30,45 * * * * /home/webdownload/syncwerft.sh > /dev/null 2>&1
+

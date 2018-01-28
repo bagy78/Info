@@ -1,0 +1,30 @@
+# FS Sonne:
+#socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12300,broadcast,range=10.1.12.0/24 &
+#socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12301,broadcast,range=10.1.12.0/24 &
+#socat UDP-RECV:7150,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12302,broadcast,range=10.1.12.0/24 &
+ 
+sudo socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:192.168.10.255:10301,broadcast,range=192.168.10.0/24 &
+sudo socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:192.168.10.255:10300,broadcast,range=192.168.10.0/24 &
+ 
+ 
+#In /etc/rc.local eintragen. Beenden mit killall socat // ps -xfa |grep socat zeigt was läuft
+ 
+# FS SonneII:
+#socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12300,broadcast,range=10.1.12.0/24 &
+#socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12301,broadcast,range=10.1.12.0/24 &
+#socat UDP-RECV:7150,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12302,broadcast,range=10.1.12.0/24 &
+ 
+sudo socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:192.168.10.255:10301,broadcast,range=192.168.10.0/24 &
+sudo socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:192.168.10.255:10300,broadcast,range=192.168.10.0/24 &
+ 
+ 
+#In /etc/rc.local eintragen. Beenden mit killall socat // ps -xfa |grep socat zeigt was läuft
+ 
+ 
+ 
+#Aus einen UDP Broadcast einen TCP Server machen:
+socat UDP-RECV:10300 TCP-LISTEN:4444
+ 
+#Aus TCP Server einen broadcast machen
+while true; do socat TCP-LISTEN:4444 UDP4-DATAGRAM:192.168.10.255:4445,broadcast; done
+# mit while true wird der port immer wieder geöffnet falls der client abbricht und sich neu verbinden will.

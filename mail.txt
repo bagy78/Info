@@ -1,0 +1,28 @@
+## apt install mailutils
+## apt install ssmtp
+
+w3m -dump http://www.monip.org/ | awk -F': ' '/IP/ { print $2 }' | mail -s "Meine Conmart IP" bagy@gmx.net
+
+## Erster Teilmuss in Variable gespeichert werden in ´ ´ 
+
+sudo gedit /etc/ssmtp/ssmtp.conf
+
+#### GMX ####
+root=EIN.BEISPIEL@gmx.de
+mailhub=mail.gmx.net:465
+rewriteDomain=gmx.net
+hostname=gmx.net
+UseTLS=YES
+AuthUser=EIN.BEISPIEL@gmx.DE
+AuthPass=GEHEIM
+FromLineOverride=NO
+
+sudo gedit /etc/ssmtp/revaliases
+
+
+Hier tragt ihr nun im folgenden Format ein welcher Nutzer welchen Server benutzen darf. In meinem Beispiel greife ich wieder Google Mail auf, die FETT gedruckten Passagen müssten wieder angepasst werden.
+
+root:EIN.BEISPIEL@gmail.com:smtp.gmail.com:587
+#www-data:EIN.BEISPIEL@gmail.com:smtp.gmail.com:587
+#OTTO:EIN.BEISPIEL@gmail.com:smtp.gmail.com:587
+bbg:bagy@gmx.net:mail.gmx.net:465

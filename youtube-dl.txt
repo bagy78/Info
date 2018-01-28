@@ -1,0 +1,65 @@
+Youtube DL
+apt-cache search "youtube"
+Benutzung
+
+Update der manuell installierten Version.
+
+youtube-dl -U
+
+Anleitung um youtube-dl manuell zu installieren:
+
+## FOLGT ##
+
+
+Nach der Installation kann man Videos im Terminal herunterladen. Die allgemeine Syntax lautet:
+
+Beispiele:
+// mp3 ohne Titelextension herunterladen.
+youtube-dl -x --audio-format mp3 --audio-quality 0 -i -o "%(title)s.%(ext)s" "https://www.youtube.com/watch?v=D5Y11hwjMNs&list=RDD5Y11hwjMNs#t=26"
+
+//Video herunterladen und im Hintergrund starten
+youtube-dl "http://www.redtube.com/1508197" > /dev/null &
+
+
+youtube-dl [OPTIONEN] URL_DES_VIDEOS 
+
+
+Beispiel:
+youtube-dl "http://www.youtube.com/watch?v=HED4h00xPPA" 
+
+
+[youube] Setting language
+[youtube] HED4h00xPPA: Downloading webpage
+[youtube] HED4h00xPPA: Downloading video info webpage
+[youtube] HED4h00xPPA: Extracting video information
+[download] Destination: Ubuntu told by Nelson Mandela-HED4h00xPPA.mp4
+[download] 100% of 4.43MiB in 00:06
+
+
+Möchte man die Youtube-ID aus dem Namen/Titel des Videos entfernen, so lautet der Befehl wie folgt:
+
+
+youtube-dl -o "%(title)s.%(ext)s" "http://www.youtube.com/watch?v=HED4h00xPPA" 
+
+
+Benötigt man dagegen nur die Tonspur des Videos, reicht folgender Befehl:
+
+
+youtube-dl -x "http://www.youtube.com/watch?v=HED4h00xPPA" 
+
+
+Man kann auch festlegen, in welchen Format der Ton gespeichert werden soll:
+youtube-dl -x --audio-format mp3 --audio-quality 0 "http://www.youtube.com/watch?v=HED4h00xPPA" 
+
+
+In neueren Version unterstützt youtube-dl mittlerweile auch mehrere deutsche Mediatheken, u.a. die von ARD, ZDF und ARTE. Alle unterstützten Video-Portale listet der Befehl:
+youtube-dl --list-extractors | less 
+
+
+Da die Ausgabe sehr lang ist, wird sie hier mit less seitenweise ausgegeben. Die Anzeige wird mit der Taste Q beendet. Man kann die zahlreichen weiteren Optionen neben der Manpage auch über den Befehl:
+youtube-dl --help | less 
+
+
+in Erfahrung bringen. Wer nicht gerne am Bildschirm liest, kann die Ausgabe auch im Homeverzeichnis speichern:
+youtube-dl --help > ~/youtube-dl_help.txt 
+

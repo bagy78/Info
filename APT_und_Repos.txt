@@ -1,0 +1,61 @@
+// Debian Update wenn das Repo abgelaufen ist
+apt -o Acquire::Check-Valid-Until=false update
+
+
+############
+
+# Configure Proxy
+Acquire::http { Proxy "http://192.168.131.64:3142"; };
+
+## unter apt.conf.d file namens 02proxy
+
+#########################################################
+
+Repo Key fehlt
+
+W: Es gibt keine öffentlichen Schlüssel für die folgenden Schlüssel-IDs:
+7638D0442B90D010
+
+Lösung
+
+Die Schlüssel-IDs 9D6D8F6BC857C906 und 7638D0442B90D010 gehören zu den Debian Wheezy Update Package Repositorys und sind Teil des Keyring-Pakets (die Update-Pakete benötigen das Keyring-Archiv). Einfach den debian-keyring installieren:
+
+apt-get install debian-keyring debian-archive-keyring
+
+
+
+#######################################################
+
+Repos für Zabbix
+
+For Ubuntu 16.04 LTS:
+$ wget http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-1+xenial_all.deb
+$ sudo dpkg -i zabbix-release_3.0-1+xenial_all.deb
+$ sudo apt update
+
+For Ubuntu 14.04 LTS:
+
+$ wget http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-1+trusty_all.deb
+$ sudo dpkg -i zabbix-release_3.0-1+trusty_all.deb
+$ sudo apt-get update
+
+For Ubuntu 12.04 LTS:
+
+$ wget http://repo.zabbix.com/zabbix/2.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_2.2-1+precise_all.deb
+$ sudo dpkg -i zabbix-release_2.2-1+precise_all.deb
+$ sudo apt-get update
+
+For Debian 8:
+
+$ wget http://repo.zabbix.com/zabbix/3.0/debian/pool/main/z/zabbix-release/zabbix-release_3.0-1+jessie_all.deb
+$ sudo dpkg -i zabbix-release_3.0-1+jessie_all.deb
+$ sudo apt-get update
+
+
+For Debian 7:
+
+$ http://repo.zabbix.com/zabbix/3.0/debian/pool/main/z/zabbix-release/zabbix-release_3.0-1+wheezy_all.deb
+$ sudo dpkg -i zabbix-release_3.0-1+wheezy_all.deb
+
+
+########################################################################

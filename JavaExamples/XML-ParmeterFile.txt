@@ -1,0 +1,67 @@
+package filehandling;
+import java.io.*;
+import javax.swing.JOptionPane;
+import java.util.Properties;
+
+/**
+ *
+ * @author Administrator
+ */
+public class FileHandling {
+
+    /**
+     * @param args the command line arguments
+     */
+    /*public static void main(String[] args)  {
+        // TODO code application logic here
+        
+
+        setPreference ("ServerPort","4001");
+        setPreference ("ServerIP","192.168.121.10");
+        
+        System.out.println("Wert für ServerIP: " + getPreference("ServerIP"));
+        
+    }*/
+    
+    //Writing and Saving Configurations
+private static void setPreference(String Key, String Value) {
+    Properties configFile = new Properties();
+    try {
+        InputStream f = new FileInputStream("configuration.xml");
+        configFile.loadFromXML(f);
+        f.close();
+    }
+    catch(IOException e) {
+    }
+    catch(Exception e) {
+        JOptionPane.showMessageDialog(null, e.getMessage());
+    }
+    configFile.setProperty(Key, Value);
+    //configFile.setProperty("mega", "cool");
+    //configFile.clear();
+    try {
+        OutputStream f = new FileOutputStream("configuration.xml");
+        configFile.storeToXML(f,"Configuration file for the NMEA Proxy");
+        
+    }
+    catch(Exception e) {
+    }
+}
+//Reading Configurations    
+private static String getPreference(String Key) {
+    Properties configFile = new Properties();
+    try {
+        InputStream f = new FileInputStream("configuration.xml");
+        configFile.loadFromXML(f);
+        f.close();
+    }
+    catch(IOException e) {
+    }
+    catch(Exception e) {
+        JOptionPane.showMessageDialog(null , e.getMessage());
+    }
+    return (configFile.getProperty(Key));
+}
+
+ 
+}

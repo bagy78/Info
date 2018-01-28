@@ -1,0 +1,37 @@
+Im Verzeichnis
+
+#Einstellungen
+git config --global user.email "bagy@gmx.net"
+git config --global user.name "bagy"
+
+
+# Initioalisieren von git
+git init
+
+#Status
+git status
+
+#Clonen eines Projekts
+git clone https://github.com/kamailio/kamailio.git
+
+#Datei hinzufügen 
+git add datei.*
+
+#Änerungen commit
+git commit -m 'Commit Kommentar'
+
+#Remote Repository definieren
+git remote add orign https://github.com/bagy78/Info.git
+
+#Remote Repository verifizieren
+git remote -v
+
+
+#GIT push and pull
+
+git push orign master
+git pull orign master
+
+
+
+

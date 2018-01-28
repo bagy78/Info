@@ -1,0 +1,63 @@
+Beispiele
+
+Hier nun einige Beispiele, die die Benutzung von tcpdump besser verdeutlichen sollen. Es sei nochmals daran erinnert, dass die Befehle immer mit Root-Rechten [1] ausgeführt werden müssen.
+
+    
+Gibt die Netzwerkschnittstellen aus, welche tcpdump sniffen kann:
+
+    sudo tcpdump -D  
+	
+
+#############################################################################################################################
+
+Schneidet die ersten 68 Bytes von sämtlichen Paketen mit, die die Netzwerkschnittstelle wlan0 passieren:
+
+    sudo tcpdump -i wlan0 
+	
+
+#############################################################################################################################
+
+Schneidet alle UDP-Pakete mit, welche 10.231.11.7 als Ziel haben:
+
+    sudo tcpdump -i wlan0 udp and dst 10.231.11.7 
+
+
+#############################################################################################################################
+
+Schneidet alle ein- und ausgehenden HTTP-Pakete, welche ubuntuusers.de als Quelle haben, mit dem Standardwert von 65535 Bytes je Paket mit und gibt das Ganze als ASCII aus. Wie man an diesem Beispiel sieht, kann man hinter src und dst den Identifier weglassen, wenn es sich um den Typ host handelt. src ubuntuusers.de hat die gleiche Bedeutung wie src host ubuntuusers.de. Die Identifier net, port und portrange müssen dagegen immer explizit deklariert werden:
+
+    sudo tcpdump -i wlan0 -A -s 0 port 80 and src ubuntuusers.de 
+	
+
+#############################################################################################################################
+
+Schneidet alle auf den Ports 20 bis 80 eingehenden Pakete mit dem Standardwert von 65535 Bytes je Paket mit und gibt den Inhalt als ASCII aus, außerdem wird aus Sicherheitsgründen das Benutzerkonto (UID) von root auf den Benutzer gustav und die Gruppe (GID) von root auf die Hauptgruppe des Benutzers gustav geändert:
+
+    sudo tcpdump -i wlan0 -A -s 0 -Z gustav src portrange 20-80 
+	
+#############################################################################################################################
+
+Schneidet DNS-Requests und deren Antworten mit. Die Ausgabe ist dabei auf minimal gestellt:
+
+    sudo tcpdump -i wlan0 -q udp port 53 
+	
+
+#############################################################################################################################
+
+Schneidet sowohl HTTP-, als auch HTTPS-Pakete mit:
+
+    sudo tcpdump -i wlan0 -q '(tcp port 80) or (tcp port 443)' 
+
+#############################################################################################################################
+
+Macht das Gleiche wie das Beispiel zuvor, nur werden die Pakete nicht formatiert auf dem Bildschirm ausgegeben, sondern raw in die Datei output.dump geschrieben:
+
+	sudo tcpdump -i wlan0 -q -w output.dump '(tcp port 80) or (tcp port 443)' 
+
+#############################################################################################################################
+
+Parst die im vorangegangenen Beispiel erzeugte Datei output.dump und gibt den Inhalt formatiert auf dem Bildschirm aus:
+
+    sudo tcpdump -r output.dump 
+
+#############################################################################################################################

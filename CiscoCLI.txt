@@ -1,0 +1,30 @@
+### Port Monitoring
+
+Switch(config)# no monitor session 1
+Switch(config)# monitor session 1 source interface fastEthernet0/1
+Switch(config)# monitor session 1 destination interface fastEthernet0/10 ## eventuell noch encapsulation dot1q
+Switch(config)# end
+
+
+### Mac Adresse sperren
+
+mac address-table static mac_address vlan vlan_ID drop
+#Beispiel
+mac address-table static 8851.fb63.5c1a  vlan 10 drop
+
+
+# ACL
+#im conf modus 
+ip access-list standard 1
+#
+Standard IP access list 1
+    10 permit 192.168.121.10 (1 match)
+    90 deny   any (69267 matches)
+
+# Anwenden auf VLAN
+
+interface Vlan152
+ ip address 192.168.152.254 255.255.255.0
+ ip access-group 1 out
+
+ 

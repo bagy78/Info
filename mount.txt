@@ -1,0 +1,18 @@
+// mount nfs
+mount 10.10.10.10:/volume1/mirror /mnt/
+
+//mount smb
+mount -t cifs //10.10.10.10/foldername /mnt/dest -o user=username,password=xyz
+
+//Eintrag in fstab
+
+# NFS-Freigabe:
+192.168.1.100:/media/photos /media/Fotos nfs rw 0 0
+
+# Samba- oder Windows-Freigabe (cifs):
+//192.168.1.100/music /media/Musik cifs credentials=/home/otto/.smbcredentials 0 0
+
+
+# Raspberrry automount Problem
+//192.168.121.78/musik /home/pi/musik cifs username=xyz,password=xyz,uid=pi,gid=pi,x-systemd.automount 0 0
+

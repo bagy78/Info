@@ -1,0 +1,26 @@
+ Install Zabbix Agent
+
+As we have successfully added zabbix apt repositories in our system let’s use following command to install Zabbix agent using following command
+
+$ sudo apt-get install zabbix-agent
+
+Step 3 – Edit Zabbix Agent Configuration
+
+After installing completed of Zabbix aget. Edit zabbix agent configuration file /etc/zabbix/zabbix_agentd.conf and update Zabbix server ip
+
+#Server=[zabbix server ip]
+#Hostname=[Hostname of client system ]
+
+Server=192.168.1.11
+Hostname=Server2
+
+Step 4 – Restarting Zabbix Agent
+
+After adding zabbix server ip in configuration file, now restart agent service using below command.
+
+# /etc/init.d/zabbix-agent restart
+
+To start and stop zabbix-agent service anytime use following commands.
+
+# /etc/init.d/zabbix-agent start
+# /etc/init.d/zabbix-agent stop

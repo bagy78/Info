@@ -1,0 +1,105 @@
+PDF verkleinern mit GhostScript
+
+gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf
+
+
+/screen selects low-resolution output similar to the Acrobat Distiller "Screen Optimized" setting.
+/ebook selects medium-resolution output similar to the Acrobat Distiller "eBook" setting.
+/printer selects output similar to the Acrobat Distiller "Print Optimized" setting.
+/prepress selects output similar to Acrobat Distiller "Prepress Optimized" setting.
+/default selects output intended to be useful across a wide variety of uses, possibly at the expense of a larger output file.
+
+___________________________________________________________________________________________
+Archiv 
+$ tar cvf archive_name.tar dirname/
+
+____________________________________________________________________________________________
+
+
+_______________________________________
+
+Linux serielle Ports anzeigen
+dmesg | grep tty 
+
+__________________________________________
+
+# FS Sonne:
+#socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12300,broadcast,range=10.1.12.0/24 &
+#socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12301,broadcast,range=10.1.12.0/24 &
+#socat UDP-RECV:7150,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12302,broadcast,range=10.1.12.0/24 &
+ 
+sudo socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:192.168.10.255:10301,broadcast,range=192.168.10.0/24 &
+sudo socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:192.168.10.255:10300,broadcast,range=192.168.10.0/24 &
+ 
+ 
+#In /etc/rc.local eintragen. Beenden mit killall socat // ps -xfa |grep socat zeigt was läuft
+ 
+
+___________________________________________________
+
+fix pakete 
+apt install -f
+
+____________________________________________
+
+alias bman='man --html=x-www-browser' # needs Paket groff
+
+sudo lshw -html > hw.html     # Zeigt die totale Hardwaraufstellung
+
+Mount über SSH
+sshfs name@server:/path/to/folder /path/to/mount/point
+
+__________________________________________________________________________________
+
+Commandobeispiele mit CMDFU online suchen
+cmdfu(){ curl "http://www.commandlinefu.com/commands/matching/$@/$(echo -n $@ | openssl base64)/plaintext"; }
+
+_________________________________________________________________________________________
+
+lsof -Pan -i tcp -i udp
+
+
+Lists all listening ports together with the PID of the associated process
+
+yes | pv | ssh wtd@$host "cat > /dev/null"
+Durchsatz messen
+
+Datenträger vollchreiben: yes hallo | pv | "cat >> hallo.txt"
+
+diff <(lsusb) <(sleep 3s && lsusb)
+
+Verschlüsseln
+tar --create --file - --posix --gzip -- <dir> | openssl enc -e -aes256 -out <file>
+Entschlüsseln
+openssl enc -d -aes256 -in <file> | tar --extract --file - --gzip
+
+
+# FS SonneII:
+#socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12300,broadcast,range=10.1.12.0/24 &
+#socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12301,broadcast,range=10.1.12.0/24 &
+#socat UDP-RECV:7150,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12302,broadcast,range=10.1.12.0/24 &
+ 
+sudo socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:192.168.10.255:10301,broadcast,range=192.168.10.0/24 &
+sudo socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:192.168.10.255:10300,broadcast,range=192.168.10.0/24 &
+ 
+ 
+#In /etc/rc.local eintragen. Beenden mit killall socat // ps -xfa |grep socat zeigt was läuft
+ 
+ 
+ 
+#Aus einen UDP Broadcast einen TCP Server machen:
+socat UDP-RECV:10300 TCP-LISTEN:4444
+ 
+#Aus TCP Server einen broadcast machen
+while true; do socat TCP-LISTEN:4444 UDP4-DATAGRAM:192.168.10.255:4445,broadcast; done
+# mit while true wird der port immer wieder geöffnet falls der client abbricht und sich neu verbinden will.
+ 
+#Man Pages in lesbarem Format im Browser öffnen.
+alias bman='man --html=x-www-browser'
+ 
+#Durchsatz messen
+yes | pv | ssh wtd@$host "cat > /dev/null"
+ 
+ 
+#Datei leeren 
+> datei.txt
