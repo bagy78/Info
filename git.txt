@@ -33,5 +33,19 @@ git push orign master
 git pull orign master
 
 
+#Repository anlegen das am Rechner schon existiert
+#Zuerst auf der Webpage ein Repo anlegen dann 
+
+git init
+echo "#Info" >> README.md
+git add README.md 
+git -m "first commit"
+git commit -m "first commit"
+git remote add origin https://github.com/bagy78/Info.git
+push -u origin master
+git push -u origin master
+git add *
+git commit -m "second commit"
+git push -u origin master
 
 
