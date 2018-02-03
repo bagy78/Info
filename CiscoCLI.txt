@@ -27,4 +27,27 @@ interface Vlan152
  ip address 192.168.152.254 255.255.255.0
  ip access-group 1 out
 
- 
+#######################################################################
+Broadcast von einem VLAN ins andere VLAN weiterleiten Cisco
+
+vlan 121 ip 192.168.121.254
+vlan 131 ip 192.168.131.254
+
+Broadcast für die Netze demnach 255 am Schluss
+
+weitergeleitet werden sollen Broadcasts aus dem vlan 121 un das vlan 131
+3 Schritte sind notwendig
+in der conf terminal ebene generell udp broadcast für den gewünschten Port aktivieren
+
+ip forward protocol udp 10003
+
+danach in das vlan wechseln in dem der Broadcast gesendet wird.
+
+int vlan 121
+ip helper-address 192.168.131.255 (also das ziel wo der BC hin soll, hier die BC Adresse von vlan 131)
+
+Danach ins Empfänger vlan
+
+int vlan 131
+ip directed-broadcast
+#############################################################################
