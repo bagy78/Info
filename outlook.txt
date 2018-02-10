@@ -1,0 +1,7 @@
+Outlook nicht als gelesen markieren im Vorschaubereich
+
+Ändern, wie schnell Nachrichten als gelesen markiert werden
+
+    Klicken Sie auf Datei > Optionen > Erweitert.
+    Klicken Sie unter Outlook-Bereiche auf Lesebereich.
+    Aktivieren Sie das Kontrollkästchen Im Lesebereich angezeigte Nachrichten als gelesen markieren.
