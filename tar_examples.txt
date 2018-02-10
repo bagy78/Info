@@ -1,0 +1,37 @@
+
+	c – Creates a new .tar archive file.
+	x - Unpack
+	t - List
+	v – Verbosely show the .tar file progress.
+	f – File name type of the archive file.
+
+	-z make gunzip
+	-j make bzip
+
+
+
+Create tar.gz Archive File -z
+
+# tar cvzf MyImages-14-09-12.tar.gz /home/MyImages
+OR
+# tar cvzf MyImages-14-09-12.tgz /home/MyImages
+
+Uncompress tar.gz Archive File
+
+# tar -xvf thumbnails-14-09-12.tar.gz
+
+
+
+
+
+Create tar.bz2 Archive File -j
+
+# tar cvfj Phpfiles-org.tar.bz2 /home/php
+OR
+# tar cvfj Phpfiles-org.tar.tbz /home/php
+OR 
+# tar cvfj Phpfiles-org.tar.tb2 /home/php
+
+Uncompress tar.bz2 Archive File
+# tar -xvf videos-14-09-12.tar.bz2
+
