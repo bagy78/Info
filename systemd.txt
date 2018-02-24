@@ -1,0 +1,58 @@
+Typ 	Beschreibung 	Wiki-Artikel
+.device 	Legt Gerätedateien an
+.mount 	Ein- und Aushängen von Dateisystemen 	Mount Units
+.path 	Eine Service Unit in Abhängigkeit einer Änderung an einer Datei oder einem Verzeichnis ausführen 	Path Units
+.network 	Für die Konfiguration von Netzwerken 	networkd
+.service 	Für Dienste 	Service Units
+.socket 	Stellt Verbindungen zwischen Prozessen her
+.target 	Definiert eine Gruppe von Units
+.timer 	Für wiederkehrende Aufgaben, ähnlich Cron-Jobs 	Timer Units. 
+
+##############################################
+[Unit]
+# Abschnitt wird im Artikel systemd/Units beschrieben
+
+[Service]
+Type=simple
+ExecStart=/PFAD/ZUM/BEFEHL/befehl
+
+[Install]
+# Abschnitt wird im Artikel systemd/Units beschrieben
+
+####################################################
+
+Schlüssel 	Erklärung
+ExecStart 	der Befehl, der beim Start der Unit ausgeführt wird
+ExecStartPre 	der Befehl, der vor dem Start der Unit (also vor der Ausführung von ExecStart) ausgeführt werden soll
+ExecStartPost 	der Befehl, der nach dem Start der Unit (also nach der Ausführung von ExecStart) ausgeführt werden soll
+WorkingDirectory 	legt das Arbeitsverzeichnis fest, in dem die Prozesse ausgeführt werden. Das Verzeichnis muss als absoluter Pfad angegeben werden oder als ~. Bei letzterem wird das Homeverzeichnis des im Schlüssel User angegebenen Nutzers gewählt.
+User 	legt fest, unter welchem Benutzer der Service laufen soll (Standard: root)
+Group 	legt fest, unter welcher Gruppe der Service laufen soll 
+
+
+https://wiki.ubuntuusers.de/systemd/Service_Units/
+https://wiki.ubuntuusers.de/systemd/Units/
+
+
+
+Selbst angelegte Units aktivieren
+
+Hat man eine eigene Unit angelegt, muss man diese noch aktivieren. Diese geschieht über den Befehl systemctl mit Root-Rechten[1][2]:
+
+sudo systemctl enable NAME_DER_UNIT_DATEI 
+
+Zum Deaktivieren dient der Befehl:
+
+sudo systemctl disable NAME_DER_UNIT_DATEI 
+
+Um zu prüfen, ob eine Unit aktiv ist, führt man folgenden Befehl aus:
+
+sudo systemctl is-enabled NAME_DER_UNIT_DATEI 
+
+Bestehende Unit editieren
+
+Mit dem Befehl
+
+sudo systemctl edit --full NAME_DER_UNIT_DATEI 
+
+wird eine Kopie der Unit-Datei aus /lib/systemd/system im Verzeichnis /etc/systemd/systemd angelegt, und der Standardeditor des Systems öffnet diese Datei zum Editieren. Nach dem Speichern und Schließen des Editors wird die Unit automatisch neu geladen.
