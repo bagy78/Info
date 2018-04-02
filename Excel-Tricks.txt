@@ -1,0 +1,1 @@
+Alter berechen =(JAHR(JETZT())-JAHR(F9))
