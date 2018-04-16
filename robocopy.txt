@@ -1,3 +1,9 @@
+update bagy 4.42018
+
+## NICHT VERFÜGPARE DATEIEN IGNORIEREN ##
+robocopy W:\M145 P:\incoming\M145 /MIR /W:0 /R:0
+###
+
 	
 robocopy  <Quellverzeichnis> <Zielverzeichnis> /MIR
 
