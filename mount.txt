@@ -16,3 +16,6 @@ mount -t cifs //10.10.10.10/foldername /mnt/dest -o user=username,password=xyz
 # Raspberrry automount Problem
 //192.168.121.78/musik /home/pi/musik cifs username=xyz,password=xyz,uid=pi,gid=pi,x-systemd.automount 0 0
 
+#Meteor Mirrror aktualisieren
+sudo mount 192.168.121.185:/volume1/mirror /mnt/mirror/
+sudo rsync -av --delete /media/bbg/METMIRROR/ /mnt/mirror/
