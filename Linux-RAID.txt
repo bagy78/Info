@@ -1,0 +1,14 @@
+Installation
+
+Folgende Pakete müssen installiert[2] werden, um ein Software-RAID erstellen zu können:
+
+    mdadm
+
+    parted
+
+
+https://wiki.ubuntuusers.de/Software-RAID/
+
+Status
+
+mdadm -D /dev/md0
