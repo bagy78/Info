@@ -1,4 +1,4 @@
-## apt install mailutils
+﻿## apt install mailutils
 ## apt install ssmtp
 
 w3m -dump http://www.monip.org/ | awk -F': ' '/IP/ { print $2 }' | mail -s "Meine Conmart IP" bagy@gmx.net
@@ -26,3 +26,36 @@ root:EIN.BEISPIEL@gmail.com:smtp.gmail.com:587
 #www-data:EIN.BEISPIEL@gmail.com:smtp.gmail.com:587
 #OTTO:EIN.BEISPIEL@gmail.com:smtp.gmail.com:587
 bbg:bagy@gmx.net:mail.gmx.net:465
+
+#############################################
+
+funktioniierende Config Meteor
+
+#
+# Config file for sSMTP sendmail
+#
+# The person who gets all mail for userids < 1000
+# Make this empty to disable rewriting.
+root=sysman@meteor.briese-research.de
+
+# The place where the mail goes. The actual machine name is required no 
+# MX records are consulted. Commonly mailhosts are named mail.domain.com
+mailhub=mailserver
+
+# Where will the mail seem to come from?
+rewriteDomain=mediatest
+
+# The full hostname
+hostname=mediatest
+
+# Are users allowed to set their own From: address?
+# YES - Allow the user to specify their own From: address
+# NO - Use the system generated From: address
+FromLineOverride=YES
+
+###############################################
+
+Mail mit anderem Absender ansenden
+
+echo hallo | mailx -a "From: bagy@gmx.net" -s "Testmail" sysman@meteor.briese-research.de
+
