@@ -3,6 +3,8 @@ mount 10.10.10.10:/volume1/mirror /mnt/
 
 //mount smb
 mount -t cifs //10.10.10.10/foldername /mnt/dest -o user=username,password=xyz
+mount -t cifs -o vers=1.0,username=user,password=pass //metmedia/musik /mnt/metmedia/
+
 
 //Eintrag in fstab
 

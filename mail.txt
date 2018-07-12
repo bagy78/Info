@@ -59,3 +59,4 @@ Mail mit anderem Absender ansenden
 
 echo hallo | mailx -a "From: bagy@gmx.net" -s "Testmail" sysman@meteor.briese-research.de
 
+rewrite domain ????
