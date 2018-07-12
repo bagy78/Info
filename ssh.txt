@@ -1,0 +1,8 @@
+###
+Anmelden an alte Cisco Switche
+
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@10.10.10.10
+
+###
+
+in /etc/ssh/sshd.conf PermitRootLogin yes eintragen
