@@ -1,0 +1,3 @@
+### Zugriff von Windows erlauben
+
+gsettings set org.gnome.Vino require-encryption false
