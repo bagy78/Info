@@ -155,5 +155,10 @@ VINO einschalten
 gsettings set org.gnome.Vino require-encryption false
 git
 
+# nur auf Dateien anwenden
+find . -type f -exec chmod 644 {} \;
+
+Auf Verzeichnisse angewandt
+find . -type d -exec chmod 644 {} \; 
 
 
