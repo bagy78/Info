@@ -1,0 +1,10 @@
+﻿Power Shell Hacks
+
+#Connection Profile ändern
+Get-NetConnectionProfile
+Set-NetConnectionProfile –InterfaceIndex # –NetworkCategory Private
+
+
+
+# Domain Controller aud NTP Syncen
+w32tm.exe /config /syncfromflags:manual /manualpeerlist:"dship1" /reliable:yes /update

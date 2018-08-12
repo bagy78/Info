@@ -6,13 +6,17 @@ mount -t cifs //10.10.10.10/foldername /mnt/dest -o user=username,password=xyz
 mount -t cifs -o vers=1.0,username=user,password=pass //metmedia/musik /mnt/metmedia/
 
 
-//Eintrag in fstab
+//Eintrag in fstabvers
 
 # NFS-Freigabe:
 192.168.1.100:/media/photos /media/Fotos nfs rw 0 0
 
 # Samba- oder Windows-Freigabe (cifs):
 //192.168.1.100/music /media/Musik cifs credentials=/home/otto/.smbcredentials 0 0
+
+
+//10.10.10.10/Name/Folder /mnt cifs vers=2.0,username=user,password=password
+
 
 
 # Raspberrry automount Problem

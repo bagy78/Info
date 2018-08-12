@@ -21,6 +21,9 @@ IP über Network Manager macht Probleme da ich niche weiß wo ich die Suchdoamin
 
 download jkameron.key und sources-bionic.list von metmirror/software
 
+wget http://metmirror/software/ConfigExamples/bionic-sources.list
+wget http://metmirror/software/Keys/jcameron-key.asc
+
 sudo apt-key add jkameron.asc
 sudo apt update
 sudo apt upgrade
