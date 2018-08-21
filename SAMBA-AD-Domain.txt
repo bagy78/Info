@@ -1,0 +1,106 @@
+https://wiki.ubuntuusers.de/Samba_Winbind/
+
+Testen der Verbindung
+ping FQDN 
+
+!!! ZEITSYNCHRONISATION  !!!!
+
+sudo apt-get install krb5-user libpam-krb5 winbind  samba  smbclient libnss-winbind libpam-winbind
+
+die Datei /etc/krb5.conf mit einem Editor öffnen.
+
+##########################
+
+[logging]
+default = FILE:/var/log/krb5.log
+kdc = FILE:
+admin_server = FILE:
+
+[libdefaults]
+default_realm = BBG.LOCAL
+ticket_lifetime = 24000
+clock_skew = 300
+
+[realms]
+BBG.LOCAL = {
+   kdc = metdc.bbg.local:88
+   admin_server = metdc.bbg.local:464
+   default_domain = BBG.LOCAL
+}
+
+[domain_realm]
+.bbg.local = BBG.LOCAL
+bbg.local = BBG.LOCAL
+
+
+############################
+
+Testen
+
+kinit Administrator@EXAMPLE.COM
+Password for Administrator@EXAMPLE.COM: **** 
+
+klist 
+
+##########################
+
+
+smb conf global settings
+
+[global]
+	
+  security = ads
+  realm = BBG.LOCAL
+  password server = 192.168.131.5
+	workgroup = BBG
+  
+  idmap uid = 10000-20000
+  idmap gid = 10000-20000
+  
+  winbind enum users = yes
+  winbind enum groups = yes
+  winbind cache time = 10
+  winbind use default domain = yes
+  
+  template homedir = /home/%U
+  template shell = /bin/bash
+  client use spnego = yes
+  client ntlmv2 auth = yes
+  encrypt passwords = yes
+  restrict anonymous = 2
+  domain master = no
+  local master = no
+  preferred master = no
+  os level = 0
+  
+############################
+
+net ads join -U Administrator
+
+###########################
+winbind muss manuell gestartet werden
+/etc/init.d/winbind restart 
+
+
+Testen
+
+wbinfo -u 
+
+sollte eine Liste der Domainbenutzer ausgeben.
+
+wbinfo -g 
+
+Sollte eine Liste der Domaingruppen ausgeben.
+
+
+Testen
+
+/etc/init.d/winbind restart 
+
+getent passwd 
+
+sollte nun ebenfalls die Domänenbenutzer ausgeben.
+
+getent group 
+
+sollte nun ebenfalls die Domänengruppen ausgeben.
