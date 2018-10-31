@@ -1,0 +1,18 @@
+Openhabian To Do 
+
+default PW ist openhabian:openhabian
+
+damint ssh funktioniert muss man in der datei 
+
+/etc/openhab2/services$ nano runtime.cfg
+
+die Zeile
+
+org.apache.karaf.shell:sshHost = 0.0.0.0
+
+auskommentieren
+
+## Bei mir war das default port aber witzigerweise 22
+trotz
+/var/lib/openhab2/etc/org.apache.karaf.shell.cfg
+
