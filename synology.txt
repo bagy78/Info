@@ -1,0 +1,8 @@
+Der Dyndnsdienst von Synology
+
+conmart.synology.me
+
+
+//Über der Synology Server verbinden
+
+https://conmart.de4.quickconnect.to/

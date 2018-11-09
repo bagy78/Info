@@ -9,4 +9,11 @@ During installation, a system group called wireshark was created. Users in this 
 
 $ sudo usermod -a -G wireshark username
 
+Update: !!!! dpkg-recoinfigure
+
+$ sudo apt-get install wireshark
+$ sudo dpkg-reconfigure wireshark-common 
+$ sudo usermod -a -G wireshark $USER
+
 Then log out and in again a you are ready to go!
+
