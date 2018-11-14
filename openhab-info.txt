@@ -16,3 +16,27 @@ auskommentieren
 trotz
 /var/lib/openhab2/etc/org.apache.karaf.shell.cfg
 
+
+#####################
+
+IP Statisch 
+
+    Sudo nano /etc/dhcpcd.conf
+
+Scrollt nun den ganzen Weg zum unteren Rand der Datei und fügt folgenden Snippets hinzu. Je nachdem, ob Ihr eine statische IP-Adresse für eine drahtgebundene Verbindung oder eine drahtlose Verbindung setzen möchtet, ist eth0 = verdrahtet, wlan0 = wireless.
+
+    interface eth0 // Kabelgebunden – wird empfohlen
+
+    static ip_address=192.168.178.10/24 //Schreibt hier eure IP und dahinter /24 hin, die Ihr haben möchtet
+    static routers=192.168.0.1 // IP eures Routers
+    static domain_name_servers=192.168.0.1 // IP eures Routers, sofern kein anderer DNS Server vorhanden
+
+oder
+
+    interface wlan0 // WLAN wird nicht empfohlen
+
+    static ip_address=192.168.0.200/24 //Schreibt hier eure IP und dahinter /24 hin, die Ihr haben möchtet
+    static routers=192.168.0.1 // IP eures Routers
+    static domain_name_servers=192.168.0.1 // IP eures Routers, sofern kein anderer DNS Server vorhanden
+
+#######################
