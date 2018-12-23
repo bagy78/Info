@@ -1,0 +1,5 @@
+#Wenn der Webserver nicht mehr anspricht
+
+service httpd restart
+
+einloggen als loginuser mit dem gesetzten Passwort
