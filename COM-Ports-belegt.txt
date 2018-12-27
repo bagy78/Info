@@ -1,0 +1,7 @@
+Com Port DB Löschen
+
+HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\COM Name Arbiter
+
+Sichere diesen Schüssel (Datei - Exportieren- ...).
+
+Klicke dann doppelt auf den Eintrag ComDB. Lösche alles, was unterWert steht und klicke ok. Schließe den Registrierungseditor und starte den Rechner neu.
