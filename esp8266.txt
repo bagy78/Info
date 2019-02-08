@@ -1,8 +1,13 @@
-Der Ordner für neue Header von Git Hub
+﻿Der Ordner für neue Header von Git Hub
 
 /home/bbg/.arduino15/packages/esp8266/hardware/esp8266/2.4.2/libraries/
 
 
+C:\Program Files (x86)\Arduino\libraries 
+
 Additional URL für Bord manager
 
 boardsmanager.additional.urls=http://arduino.esp8266.com/stable/package_esp8266com_index.json
+
+
+## DTH Library hinzugefügt 
