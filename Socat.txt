@@ -1,4 +1,4 @@
-# FS Sonne:
+﻿# FS Sonne:
 #socat UDP-RECV:10300,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12300,broadcast,range=10.1.12.0/24 &
 #socat UDP-RECV:10301,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12301,broadcast,range=10.1.12.0/24 &
 #socat UDP-RECV:7150,range=192.168.20.0/24 UDP4-DATAGRAM:10.1.12.0:12302,broadcast,range=10.1.12.0/24 &
@@ -28,3 +28,7 @@ socat UDP-RECV:10300 TCP-LISTEN:4444
 #Aus TCP Server einen broadcast machen
 while true; do socat TCP-LISTEN:4444 UDP4-DATAGRAM:192.168.10.255:4445,broadcast; done
 # mit while true wird der port immer wieder geöffnet falls der client abbricht und sich neu verbinden will.
+
+Meteor Test
+gezielter UDP nach BC 
+socat UDP-RECV:5123 UDP4-DATAGRAM:192.168.121.255:6123,broadcast
