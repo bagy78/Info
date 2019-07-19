@@ -51,3 +51,79 @@ Danach ins Empfänger vlan
 int vlan 131
 ip directed-broadcast
 #############################################################################
+
+SOFTWARE EINSPIELEN IOS
+
+Anlegen von selbst gemachtem tar  Archiv. Hat eine Ordnerebene weniger als von Cisco HP
+
+archive tar /create tftp://10.10.10.10/c2960-lanlitek9-mz.122-50.SE5.tar flash://c2960-lanlitek9-mz.122-50.SE5
+
+______________________________________________________________________________________________________________
+
+Auf Cisco Einspielen: runtergeladenes tar
+archive tar /xtract tftp://10.10.10.10/c2960-lanlitek9-tar.122-55.SE12.tar flash:  
+
+# Bei eigenem Archiv zuerst das Verzeichnis anlegen
+mkdir c3750-ipbasek9-mz.122-37.SE
+
+Hier der exacte befehl zum Einspielen unseres SW Paketes in eine Ersatzswitch
+archive tar /xtract tftp://10.10.10.10/c3750-ipbasek9-mz.122-37.SE.tar flash://c3750-ipbasek9-mz.122-37.SE
+
+
+Set Boot Option
+
+flash:c2960-lanlitek9-mz.122-55.SE12/c2960-lanlitek9-mz.122-55.SE12.bin
+
+________________________________________________________________________________________________
+#flash anzeigen
+man ist default mäßig im Verzeichnis flash
+
+dir flash:   # oder nur dir
+
+unterverzeichnis anzeigen 
+
+Switch#dir flash:c3750-ipbase-mz.122-50.SE5/    # Verzeichnisname ist SW Version
+
+____________________________________________________________________________________________________________
+kopieren der .bin datei:   copy quelle ziel
+
+copy flash:c3750-ipbase-mz.122-50.SE5/c3750-ipbase-mz.122-50.SE5.bin tftp  ## Ziel ist TFTP
+
+
+
+#################
+Archiv erzeugen  archive tar /create Ziel und Name des Archives und dann das VErzeichnis welches verwendet werden soll hier flash:// verwenden als ziel
+
+archive tar /create tftp://10.10.10.10/c3750-ipbase-mz.122-50.SE5.tar flash://c3750-ipbase-mz.122-50.SE5
+
+im Falle des Haupt Switches ist das dann
+
+archive tar /create tftp://10.10.10.10/c3750-ipbasek9-mz.122-37.SE.tar flash://c3750-ipbasek9-mz.122-37.SE
+
+#####################
+
+vor dem Testen #boot manual setzen
+dannim Boot Modus den Pfad zum fgewünschten Image angeben:
+
+boot flash:/c3750-ipbasek9-mz.122-37.SE/c3750-ipbasek9-mz.122-37.SE.bin
+
+
+verzeichnis löschen 
+delete /f /r flash:xxxxx ##löscht alles und ohne rückfrage
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
