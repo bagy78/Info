@@ -1,0 +1,15 @@
+nmcli 
+   32  nmcli con show 
+   33  nmcli show 
+   34  nmcli connection show 
+   40  nmcli connection show 
+   41  nmcli connection show wlp3s0
+   42  nmcli connection show wifi
+   43  nmcli connection show Ether1
+   44  nmcli connection show A1-108CE7 
+   45  nmcli connection show A1-108CE7 | grep DNS
+   46  nmcli connection show 
+   47  nmcli connection up A1-108CE7 
+   48  nmcli connection down A1-108CE7 
+   49  nmcli connection up A1-108CE7 
+   50  nmcli device wifi list 
