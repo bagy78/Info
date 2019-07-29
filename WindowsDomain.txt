@@ -8,3 +8,11 @@ Set-NetConnectionProfile –InterfaceIndex # –NetworkCategory Private
 
 # Domain Controller aud NTP Syncen
 w32tm.exe /config /syncfromflags:manual /manualpeerlist:"dship1" /reliable:yes /update
+
+# Maschine hat die Vertrauensstellung zur Domäne verloren, z.B. durch Rücksetzen vom Snapshot
+
+Reset-ComputerMachinePassword -Server MyDC -Credential mydomain\admin
+
+### Mit und ohne Repair liefert true und false zurück
+
+Test-ComputerSecureChannel -Repair -Server MyDC-Credential mydomain\admin
