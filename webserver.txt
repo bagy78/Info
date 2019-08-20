@@ -1,0 +1,104 @@
+
+https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04
+
+
+apt update
+apt install apache2
+ufw app list
+ufw app info "Apache Full"
+
+	Output:
+	Profile: Apache Full
+	Title: Web Server (HTTP,HTTPS)
+	Description: Apache v2 is the next generation of the omnipresent Apache web
+	server.
+	
+	Ports:
+	  80,443/tcp
+
+
+ufw allow in "Apache Full"
+
+
+apt install mysql-server
+
+mysql_secure_installation
+
+mysql
+
+>SELECT user,authentication_string,plugin,host FROM mysql.user;
++------------------+-------------------------------------------+-----------------------+-----------+
+| user             | authentication_string                     | plugin                | host      |
++------------------+-------------------------------------------+-----------------------+-----------+
+| root             |                                           | auth_socket           | localhost |
+| mysql.session    | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE | mysql_native_password | localhost |
+| mysql.sys        | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE | mysql_native_password | localhost |
+| debian-sys-maint | *6129B55DFC5275442351C339002D1665C5772323 | mysql_native_password | localhost |
++------------------+-------------------------------------------+-----------------------+-----------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+FLUSH PRIVILEGES;
+
+mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
++------------------+-------------------------------------------+-----------------------+-----------+
+| user             | authentication_string                     | plugin                | host      |
++------------------+-------------------------------------------+-----------------------+-----------+
+| root             | *68F60CBB73A56DF6FB52BD3C589EB609CF1798E8 | mysql_native_password | localhost |
+| mysql.session    | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE | mysql_native_password | localhost |
+| mysql.sys        | *THISISNOTAVALIDPASSWORDTHATCANBEUSEDHERE | mysql_native_password | localhost |
+| debian-sys-maint | *6129B55DFC5275442351C339002D1665C5772323 | mysql_native_password | localhost |
++------------------+-------------------------------------------+-----------------------+-----------+
+
+
+apt install php libapache2-mod-php php-mysql
+
+nano /etc/apache2/mods-enabled/dir.conf
+
+<IfModule mod_dir.c>
+    DirectoryIndex index.php index.html index.cgi index.pl index.xhtml index.htm
+</IfModule>
+
+systemctl restart apache2
+
+systemctl status apache2
+
+
+apt search php- | less
+
+apt show php-cli
+
+
+mkdir /var/www/your_domain
+
+
+chown www-data:www-data /var/www/joomla/
+chmod -R 755 /var/www/joomla/
+
+nano /var/www/joomla/index.html
+
+<html>
+    <head>
+        <title>Welcome to Your_domain!</title>
+    </head>
+    <body>
+        <h1>Success!  The your_domain server block is working!</h1>
+    </body>
+</html>
+
+
+mkdir /var/www/wordpress
+
+
+chown www-data:www-data /var/www/wordpress/
+chmod -R 755 /var/www/wordpress/
+
+nano /var/www/wordpress/index.html
+
+
+______________________________________________________
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-18-04
+
+
