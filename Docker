@@ -11,3 +11,7 @@ docker pull portainer/portainer
 docker volume create portainer_data
 docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
 # Danach läuft Portainer auf port 9000
+
+# BBG 31.8.2019
+docker run -d -p 9000:9000 --name portainer -d --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+docker run -d --restart always -v /home/zim:/data -p 80:80 --name metwiki kiwix/kiwix-serve wiki.zim
