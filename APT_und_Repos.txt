@@ -1,4 +1,4 @@
-// Debian Update wenn das Repo abgelaufen ist
+﻿// Debian Update wenn das Repo abgelaufen ist
 apt -o Acquire::Check-Valid-Until=false update
 
 
@@ -59,3 +59,7 @@ $ sudo dpkg -i zabbix-release_3.0-1+wheezy_all.deb
 
 
 ########################################################################
+
+WEnn das Dist Upgrade Probleme macht 
+
+sudo dpkg --configure -a
