@@ -112,6 +112,19 @@ verzeichnis löschen
 delete /f /r flash:xxxxx ##löscht alles und ohne rückfrage
 
 
+VLAN Server und Client und Domain
+
+alles und VTP zu finden.
+
+
+### SSH einschalten 
+
+line vty 0 4
+ login local
+
+set switchport to trunk 
+
+
 
 
 
