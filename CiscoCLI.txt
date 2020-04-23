@@ -116,27 +116,34 @@ VLAN Server und Client und Domain
 
 alles und VTP zu finden.
 
+sh vtp status
 
 ### SSH einschalten 
+#configure SSH on Cisco
+
+enable
+username xyz privilege 15 password 0 xyz
+configure terminal
+hostname hostname
+ip domain-name domain_name
+crypto key generate rsa
+end
+show running-config
+copy running-config startup-config
 
 line vty 0 4
  login local
 
-set switchport to trunk 
+
+#LACP
+sh lacp neigbours
 
 
 
 
+###################
+POE
 
-
-
-
-
-
-
-
-
-
-
-
+config-if power inline auto 
+show power inline
 
