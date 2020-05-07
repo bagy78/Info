@@ -1,0 +1,1 @@
+rsync -nrv --include="*.pdf" --exclude="*" /Storage/uploads/ /website/uploads/
