@@ -1,0 +1,4 @@
+# Hängengebliebenen Prozess definieren
+
+ps aux | grep rsh | grep mail | awk -F" " '{print $2}'
+

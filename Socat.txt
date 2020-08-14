@@ -32,3 +32,9 @@ while true; do socat TCP-LISTEN:4444 UDP4-DATAGRAM:192.168.10.255:4445,broadcast
 Meteor Test
 gezielter UDP nach BC 
 socat UDP-RECV:5123 UDP4-DATAGRAM:192.168.121.255:6123,broadcast
+
+#Aus einem UDP Broadcast einen TCP Client machen.
+socat UDP-RECV:4003 TCP:192.168.121.77:5557
+#Aus einem UDP Broadcast einen UDP Unicast machen
+socat UDP-RECV:4003 UDP-DATAGRAMM:192.168.121.77:5557
+

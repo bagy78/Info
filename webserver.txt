@@ -1,6 +1,9 @@
 
 https://www.digitalocean.com/community/tutorials/how-to-install-linux-apache-mysql-php-lamp-stack-ubuntu-18-04
 
+apt-key add cameron.asc
+
+
 
 apt update
 apt install apache2
@@ -23,6 +26,8 @@ ufw allow in "Apache Full"
 apt install mysql-server
 
 mysql_secure_installation
+
+#no for password validation alles andere Y
 
 mysql
 
@@ -102,3 +107,54 @@ ______________________________________________________
 https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-18-04
 
 
+apt install phpmyadmin php-mbstring php-gettext
+
+## apache2 muss selected werden
+
+## Passwort für PHPmyadmin eingeben
+
+##in mysql einstegen wenn rootpasswort schon vergeben
+mysql -u root -p
+
+##secure myphpadmin
+nano /etc/apache2/conf-available/phpmyadmin.conf
+
+add 
+
+<Directory /usr/share/phpmyadmin>  ## existing
+    Options FollowSymLinks     ## existing
+    DirectoryIndex index.php   ## existing
+    AllowOverride All    ### to add by admin
+
+service apache2 restart
+
+##htaccess anlegen
+nano /usr/share/phpmyadmin/.htaccess
+
+#insert
+#
+AuthType Basic
+AuthName "Restricted Files"
+AuthUserFile /etc/phpmyadmin/.htpasswd
+Require valid-user
+#
+
+################
+Here is what each of these lines mean:
+
+    AuthType Basic: This line specifies the authentication type that you are implementing. This type will implement password authentication using a password file.
+    AuthName: This sets the message for the authentication dialog box. You should keep this generic so that unauthorized users won’t gain any information about what is being protected.
+    AuthUserFile: This sets the location of the password file that will be used for authentication. This should be outside of the directories that are being served. We will create this file shortly.
+    Require valid-user: This specifies that only authenticated users should be given access to this resource. This is what actually stops unauthorized users from entering.
+
+############
+
+now create this file and pass it an initial user with the htpasswd utility:
+
+htpasswd -c /etc/phpmyadmin/.htpasswd "username"
+
+
+#########
+
+#turn off access logging
+# in virtual hsot conf datei
