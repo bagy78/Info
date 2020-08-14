@@ -12,4 +12,4 @@ nmcli
    47  nmcli connection up A1-108CE7 
    48  nmcli connection down A1-108CE7 
    49  nmcli connection up A1-108CE7 
-   50  nmcli device wifi list 
+   50  nmcli device wifi list nmc   
