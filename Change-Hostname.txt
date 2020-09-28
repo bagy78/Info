@@ -1,0 +1,8 @@
+$ sudo hostnamectl set-hostname linuxconfig
+
+Futhermore, check for the existence of /etc/cloud/cloud.cfg configuration. If the file exists edit the file and change the settings within:
+
+FROM:
+preserve_hostname: false
+TO:
+preserve_hostname: true

@@ -147,3 +147,9 @@ POE
 config-if power inline auto 
 show power inline
 
+
+#######################
+MAC Adresse blocken
+mac address-table static f00f.ec72.641e vlan 131 drop
+
+
