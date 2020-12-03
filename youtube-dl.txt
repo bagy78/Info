@@ -1,3 +1,12 @@
+Update: 
+-a abeitet eine liste im textformat ab
+
+#youtube-dl Eine Playlist laden und den Index der Playlist in den Namen integrieren.
+youtube-dl -o "%(playlist_index)s-%(title)s.%(ext)s" "playlist_link"
+
+#playist downloaden und bereits existiernde nicht erneut downlaoden legt die Datei download.txt an
+youtube-dl --download-archive download.txt -o "%(playlist_index)s-%(title)s.%(ext)s" "https://www.youtube.com/watch?v=DiidEp6DqCo&list=PLNmsVeXQZj7q0ao69AIogD94oBgp3E9Zs"
+
 Youtube DL
 apt-cache search "youtube"
 Benutzung
