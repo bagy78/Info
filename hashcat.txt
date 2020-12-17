@@ -1,0 +1,9 @@
+hashcat -m 10500 hash.txt -w 3 -a 3 ?d?d?d?d --potfile-disable
+
+hashcat -m 10500 hash.txt -w 3 -a 3 sonne?d?d?d?d --potfile-disable
+
+hashcat -m 10500 hash.txt -w 3 -a 3 -1 kjhfkjdashfakjda0123456789 ?l?l?l?l?l?d?d?d?d
+
+hashcat -m 10500 -a 3 sonnehash.txt -w 3 -1 ?h ?1?1?1?1?1?1?1?1?1
+
+
