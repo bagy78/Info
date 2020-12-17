@@ -1,0 +1,6 @@
+qpdf --encrypt test123 test123 40 -- input.pdf doc_with_pass.pdf
+
+Where test123 is both the user and owner password, 
+the next value is for encryption key-length which may be 40, 128, or 256.
+
+#John just got the user pw in first try
