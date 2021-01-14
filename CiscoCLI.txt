@@ -97,7 +97,7 @@ Archiv erzeugen  archive tar /create Ziel und Name des Archives und dann das VEr
 archive tar /create tftp://10.10.10.10/c3750-ipbase-mz.122-50.SE5.tar flash://c3750-ipbase-mz.122-50.SE5
 
 im Falle des Haupt Switches ist das dann
-
+fl	flash://
 archive tar /create tftp://10.10.10.10/c3750-ipbasek9-mz.122-37.SE.tar flash://c3750-ipbasek9-mz.122-37.SE
 
 #####################
@@ -107,6 +107,15 @@ dannim Boot Modus den Pfad zum fgewünschten Image angeben:
 
 boot flash:/c3750-ipbasek9-mz.122-37.SE/c3750-ipbasek9-mz.122-37.SE.bin
 
+################
+Ohne boot Manual
+
+show boot
+
+set boot image to all stack members
+#boot system switch all flash:/c3750-advipservicesk9-mz.122-25.SEE2.bin
+
+
 
 verzeichnis löschen 
 delete /f /r flash:xxxxx ##löscht alles und ohne rückfrage
@@ -114,7 +123,7 @@ delete /f /r flash:xxxxx ##löscht alles und ohne rückfrage
 
 VLAN Server und Client und Domain
 
-alles und VTP zu finden.
+alles und VTP zu finden. flash
 
 sh vtp status
 
