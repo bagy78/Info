@@ -49,3 +49,10 @@ git commit -m "second commit"
 git push -u origin master
 
 
+#
+Git mit 2 Factor Authentification
+
+Got to User Settings not to Repoitory Settings
+
+-> choose Develeoper Settings 
+-> choose peronal Access Tokens
