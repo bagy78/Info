@@ -1,0 +1,10 @@
+# Routen anzeigen
+route print 
+
+# Route hinzufügen
+
+route ADD 192.168.20.0 MASK 255.255.255.0 192.168.0.10
+
+# Route permanent hinzufügen
+
+route -p ADD 192.168.20.0 MASK 255.255.255.0 192.168.0.10

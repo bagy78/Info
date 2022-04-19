@@ -1,0 +1,39 @@
+$ sudo hostnamectl set-hostname myhostname
+
+Futhermore, check for the existence of /etc/cloud/cloud.cfg configuration. If the file exists edit the file and change the settings within:
+
+FROM:
+preserve_hostname: false
+TO:
+preserve_hostname: true
+
+
+Change Timezone
+timedatectl list-timezones
+timedatectl set-timezone <your_time_zone>  #UTC
+
+#####################
+Change IP on modern Ubuntu
+
+#check 
+cat /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
+#must be
+network: {config: disabled}
+
+#edit file 
+/etc/netplan/00-installer-config.yaml1
+
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    ens160:
+      addresses:
+      - 192.168.121.170/24
+      gateway4: 192.168.121.254
+      nameservers:
+        addresses:
+        - 192.168.121.100
+        - 192.168.121.99
+        search:
+        - met.local
+  version: 2

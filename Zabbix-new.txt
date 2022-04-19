@@ -1,0 +1,139 @@
+I8,        8        ,8I            88
+`8b       d8b       d8'            88                                                                ,d
+ "8,     ,8"8,     ,8"             88                                                                88
+  Y8     8P Y8     8P   ,adPPYba,  88   ,adPPYba,   ,adPPYba,   88,dPYba,,adPYba,    ,adPPYba,     MM88MMM  ,adPPYba,
+  `8b   d8' `8b   d8'  a8P_____88  88  a8"     ""  a8"     "8a  88P'   "88"    "8a  a8P_____88       88    a8"     "8a
+   `8a a8'   `8a a8'   8PP"""""""  88  8b          8b       d8  88      88      88  8PP"""""""       88    8b       d8
+    `8a8'     `8a8'    "8b,   ,aa  88  "8a,   ,aa  "8a,   ,a8"  88      88      88  "8b,   ,aa       88,   "8a,   ,a8"
+     `8'       `8'      `"Ybbd8"'  88   `"Ybbd8"'   `"YbbdP"'   88      88      88   `"Ybbd8"'       "Y888  `"YbbdP"'
+
+
+
+                                                                    88           88           88
+                                      ,d                            88           88           ""
+                                      88                            88           88
+    88,dPYba,,adPYba,    ,adPPYba,  MM88MMM  888888888  ,adPPYYba,  88,dPPYba,   88,dPPYba,   88  8b,     ,d8
+    88P'   "88"    "8a  a8P_____88    88          a8P"  ""     `Y8  88P'    "8a  88P'    "8a  88   `Y8, ,8P'
+    88      88      88  8PP"""""""    88       ,d8P'    ,adPPPPP88  88       d8  88       d8  88     )888(
+    88      88      88  "8b,   ,aa    88,    ,d8"       88,    ,88  88b,   ,a8"  88b,   ,a8"  88   ,d8" "8b,
+    88      88      88   `"Ybbd8"'    "Y888  888888888  `"8bbdP"Y8  8Y"Ybbd8"'   8Y"Ybbd8"'   88  8P'     `Y8
+
+
+
+#########
+
+https://www.zabbix.com/download?zabbix=5.0&os_distribution=debian&os_version=10_buster&db=mysql
+https://techexpert.tips/de/zabbix-de/zabbix-5-installation-auf-ubuntu-linux/
+
+
+apt-get update
+apt-get install mysql-server mysql-client
+
+
+mysql -u root -p
+
+CREATE DATABASE zabbix CHARACTER SET UTF8 COLLATE UTF8_BIN;
+
+CREATE USER 'zabbix'@'%' IDENTIFIED BY 'kamisama123';
+
+CREATE USER 'zabbix'@'%' IDENTIFIED BY 'kamisama123';
+
+GRANT ALL PRIVILEGES ON zabbix.* TO 'zabbix'@'%';
+quit;
+
+#############
+mkdir /downloads
+cd /downloads
+wget https://cdn.zabbix.com/zabbix/sources/stable/5.0/zabbix-5.0.0.tar.gz
+############
+tar -zxvf zabbix-5.0.0.tar.gz
+cd zabbix-5.0.0/database/mysql/
+mysql -u zabbix -p zabbix < schema.sql
+mysql -u zabbix -p zabbix < images.sql
+mysql -u zabbix -p zabbix < data.sql
+
+#############
+
+
+
+apt-get install apache2 php libapache2-mod-php php-cli php-mysql php-mbstring php-gd php-xml php-bcmath php-ldap mlocate
+
+
+######
+updatedb
+locate php.ini
+vi /etc/php/7.4/apache2/php.ini
+
+  max_execution_time = 300
+  memory_limit = 256M
+  post_max_size = 32M
+  max_input_time = 300
+  date.timezone = America/Sao_Paulo
+
+
+  service apache2 restart
+
+
+  apt install phpmyadmin
+
+  Go to MySQL
+
+  mysql> SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+  +------------------+------------------------------------------------------------------------+-----------------------+-----------+
+| user             | authentication_string                                                  | plugin                | host      |
++------------------+------------------------------------------------------------------------+-----------------------+-----------+
+| zabbix           | $A$005$trp!edVndwrZ_1Y_(gdwWrG0hXiWs1JlgGUTtb8NZiK5tUb0VVjpFdV0eULD | caching_sha2_password | %         |
+| debian-sys-maint | $A$005$vpt?F._f2
+^k5\9r"6m474YYF0Cyo68GNMTb9ajik3bGDzFi5n6sfjLAY5h8 | caching_sha2_password | localhost |
+| mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| phpmyadmin       | $A$005$N+:U8W2l/,:;|1qd27az079winoiYlI7dXlzjgciiKJnZ5MVltS6SYbnFzD | caching_sha2_password | localhost |
+| root             |                                                                        | auth_socket           | localhost |
++------------------+------------------------------------------------------------------------+-----------------------+-----------+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+SELECT user,authentication_string,plugin,host FROM mysql.user;
+
+  +------------------+------------------------------------------------------------------------+-----------------------+-----------+
+| user             | authentication_string                                                  | plugin                | host      |
++------------------+------------------------------------------------------------------------+-----------------------+-----------+
+| zabbix           | $A$005$trp!edVndwrZ_1Y_(gdwWrG0hXiWs1JlgGUTtb8NZiK5tUb0VVjpFdV0eULD | caching_sha2_password | %         |
+| debian-sys-maint | $A$005$vpt?F._f2
+^k5\9r"6m474YYF0Cyo68GNMTb9ajik3bGDzFi5n6sfjLAY5h8 | caching_sha2_password | localhost |
+| mysql.infoschema | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| mysql.session    | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| mysql.sys        | $A$005$THISISACOMBINATIONOFINVALIDSALTANDPASSWORDTHATMUSTNEVERBRBEUSED | caching_sha2_password | localhost |
+| phpmyadmin       | $A$005$N+:U8W2l/,:;|1qd27az079winoiYlI7dXlzjgciiKJnZ5MVltS6SYbnFzD | caching_sha2_password | localhost |
+| root             | *8268E09955F2D5F3BD67EE33156C85C255BCED08                              | mysql_native_password | localhost |
++------------------+------------------------------------------------------------------------+-----------------------+-----------+
+
+
+FLUSH PRIVILEGES;
+
+Install from repo
+
+apt install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf zabbix-agent
+
+
+prepare DATABASE
+zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+
+
+Configure the database for Zabbix server
+
+Edit file /etc/zabbix/zabbix_server.conf
+DBPassword=password
+
+
+Configure PHP for Zabbix frontend
+
+Edit file /etc/zabbix/apache.conf, uncomment and set the right timezone for you.
+# php_value date.timezone Europe/Riga
+
+Start Zabbix server and agent processes
+
+Start Zabbix server and agent processes and make it start at system boot.
+# systemctl restart zabbix-server zabbix-agent apache2
+# systemctl enable zabbix-server zabbix-agent apache2 

@@ -30,6 +30,40 @@ bbg:bagy@gmx.net:mail.gmx.net:465
 #############################################
 
 funktioniierende Config Meteor
+# sSMTP aliases
+# 
+# Format:	local_account:outgoing_address:mailhub
+#
+# Example: root:your_login@your.domain:mailhub.your.domain[:port]
+# where [:port] is an optional port number that defaults to 25.
+root:sysman@meteor.briese-research.de
+
+
+#
+# Config file for sSMTP sendmail
+#
+# The person who gets all mail for userids < 1000
+# Make this empty to disable rewriting.
+root=sysman@meteor.briese-research.de
+
+# The place where the mail goes. The actual machine name is required no 
+# MX records are consulted. Commonly mailhosts are named mail.domain.com
+mailhub=mailserver
+
+# Where will the mail seem to come from?
+# rewriteDomain=intranet
+
+# The full hostname
+hostname=intranet
+
+# Are users allowed to set their own From: address?
+# YES - Allow the user to specify their own From: address
+# NO - Use the system generated From: address
+FromLineOverride=YES
+
+##############################################
+
+Meteor Ende
 
 #
 # Config file for sSMTP sendmail
@@ -54,6 +88,11 @@ hostname=mediatest
 FromLineOverride=YES
 
 ###############################################
+
+
+
+
+
 
 Mail mit anderem Absender ansenden
 

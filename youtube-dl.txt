@@ -1,3 +1,7 @@
+# Install
+pip3 install --upgrade youtube-dl
+
+
 Update: 
 -a abeitet eine liste im textformat ab
 
