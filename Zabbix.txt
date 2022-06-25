@@ -1,3 +1,13 @@
+Update from 5 to 6 
+
+
+#### Add local
+
+locale-gen "en_US"
+
+
+####
+
  Install Zabbix Agent
 
 As we have successfully added zabbix apt repositories in our system let’s use following command to install Zabbix agent using following command

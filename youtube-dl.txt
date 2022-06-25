@@ -1,3 +1,8 @@
+# Wegscheider laden 
+youtube-dl -F https://dms.redbull.tv/v5/dms/media/stv/AAEQ9PC9NEV4LAV22K55/426x240@553132/personal_computer/chrome/gb/playlist.m3u8
+youtube-dl -f 493+audio-English https://dms.redbull.tv/v5/destination/stv/AAEQ9PC9NEV4LAV22K55/personal_computer/chrome/gb/de_GB/playlist.m3u8
+
+
 # Install
 pip3 install --upgrade youtube-dl
 

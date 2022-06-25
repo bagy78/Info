@@ -1,0 +1,38 @@
+# Samba User listen
+pdbedit -L
+
+# Linux User hinzufügen
+useradd meteor
+
+# Passwort für Linux User erstellen
+passwd meteor
+
+# Linux User listen
+cat /etc/passwd
+
+# Smaba User hinzufügen Passwort wird erfragt muss nicht gleich dem windows pw sein
+smbpasswd -a meteor
+
+# Neuer Samba User jetzt sichtbar
+pdbedit -L
+
+cd /data
+mkdir expedition_backup
+chown meteor:meteor expedition_backup/
+
+# smb.conf sichern
+cp smb.conf bkup.smb.conf
+
+# smb conf bearbeiten
+nano /etc/samba/smb.conf
+
+# neuer share
+[expedition_backup]
+   comment = Expedition Backup Directory
+   path = /data/expedition_backup
+   valid users = meteor
+   public = no
+   writable = yes
+
+# samba service neu starten
+systemctl reload smb.service

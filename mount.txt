@@ -1,3 +1,8 @@
+// mount ro
+sudo mount -t cifs //metbase/standleitung /home/script/mntmetbase/ -o ro,vers=2.0,user=x,password=y
+sudo mount -rw -o remount //metbase/standleitung /home/script/mntmetbase/
+
+
 // mount nfs
 mount 10.10.10.10:/volume1/mirror /mnt/
 

@@ -1,0 +1,21 @@
+journalctl --disk-usage
+ journalctl --rotate
+ journalctl --vacuum-time=2days
+ 
+ /etc/systemd/journald.conf
+ # SystemMaxUse=100M
+ 
+ systemctl daemon-reload
+
+check DB size
+SELECT table_schema "zabbix", ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) "DB Size in MB" FROM information_schema.tables GROUP BY table_schema; 
+ 
+SELECT * FROM history_uint WHERE clock < 1654096671;
+
+
+DELETE FROM history_uint WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
+DELETE FROM history WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
+DELETE FROM trends_uint WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
+DELETE FROM trends WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
+DELETE FROM events WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
+DELETE FROM alerts WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
