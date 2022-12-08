@@ -7,10 +7,15 @@ journalctl --disk-usage
  
  systemctl daemon-reload
 
+
+
 check DB size
 SELECT table_schema "zabbix", ROUND(SUM(data_length + index_length) / 1024 / 1024, 1) "DB Size in MB" FROM information_schema.tables GROUP BY table_schema; 
  
 SELECT * FROM history_uint WHERE clock < 1654096671;
+SELECT UNIX_TIMESTAMP() AS 'MySQL Result';
+
+
 
 
 DELETE FROM history_uint WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
@@ -19,8 +24,17 @@ DELETE FROM trends_uint WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35
 DELETE FROM trends WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
 DELETE FROM events WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
 DELETE FROM alerts WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
+DELETE FROM auditlog WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 90 DAY));
+DELETE FROM history_str WHERE clock < UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 35 DAY));
 
-
+ANALYZE TABLE history_uint;
+ANALYZE TABLE history;
+ANALYZE TABLE trends_uint;
+ANALYZE TABLE trends;INSERT INTO TABLE 
+ANALYZE TABLE events;
+ANALYZE TABLE alerts;
+ANALYZE TABLE auditlog;
+ANALYZE TABLE history_str;
 
 Table neu aufziehen
 CREATE TABLE <NEW.NAME.TABLE> LIKE <TABLE.CRASHED>;
@@ -33,4 +47,4 @@ After work well, delete
 
 DROP TABLE <TABLE.CRASHED.BACKUP>;
 
-ANALYZE TABLE <TABLE.CRASHED>;
+ANALYZE TABLE <TABLE.CRASHED>;re

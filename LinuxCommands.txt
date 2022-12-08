@@ -1,3 +1,31 @@
+SSH Key hinterlegen
+
+1. Login in den „Client“ mit dem User, welcher auf den Server zugreifen soll.
+2. Schlüssel generieren.
+1
+	
+user@client: ssh-keygen -t rsa
+
+Es werden keine Kennwörter vergeben.
+
+3. Ordner „.ssh“ im Userverzeichnis auf dem Server erstellen wenn nicht schon vorhanden.
+1
+	
+user@client: ssh serveruser@server mkdir -p .ssh
+
+4. Öffentlicher Schlüssel vom client in Datei auf dem Server hinterlegen.
+1
+	
+user@client: cat .ssh/id_rsa.pub | ssh serveruser@server 'cat >> .ssh/authorized_keys'
+
+Jetzt sollte man ohne Passwortabfrage auf den Server kommen.
+1
+	
+user@client: ssh serveruser@server
+
+Soll user@client noch auf weitere User/Server-Kombinationen Zugriff haben sind die Schritte 3 und 4 jeweils zu wiederholen.
+
+#############################################################################################################
 PDF verkleinern mit GhostScript
 
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook -dNOPAUSE -dQUIET -dBATCH -sOutputFile=output.pdf input.pdf

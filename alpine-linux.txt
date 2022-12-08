@@ -1,0 +1,24 @@
+## SETUP ALPINE ##
+
+#chronyd /etc/chrony/chronyd.conf
+#ADD
+server dship1 iburst
+
+######################################
+
+Change repository
+
+/etc/apk/rpositories
+
+http://dl-cdn.alpinelinux.org/alpine/v3.16/main
+http://dl-cdn.alpinelinux.org/alpine/v3.16/community
+#http://dl-cdn.alpinelinux.org/alpine/edge/main
+#http://dl-cdn.alpinelinux.org/alpine/edge/community
+#http://dl-cdn.alpinelinux.org/alpine/edge/testing
+
+
+# Docker als Service und boot on start definieren
+
+rc-update add docker boot
+
+service docker start

@@ -1,0 +1,15 @@
+nano /etc/systemd/resolved.conf
+
+[Resolve]
+DNS=1.1.1.1
+#FallbackDNS=
+#Domains=
+#LLMNR=no
+#MulticastDNS=no
+#DNSSEC=no
+#DNSOverTLS=no
+#Cache=no
+DNSStubListener=no    <------------
+#ReadEtcHosts=yes
+
+
