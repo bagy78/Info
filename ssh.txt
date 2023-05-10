@@ -6,3 +6,16 @@ ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@10.10.10.10
 ###
 
 in /etc/ssh/sshd.conf PermitRootLogin yes eintragen
+
+
+
+key zu anderem Server hinzufügen
+
+Generieren Sie einen SSH-Schlüssel auf Ihrem lokalen Computer, wenn Sie noch keinen haben. Sie können dies mit dem Befehl ssh-keygen tun.
+
+Kopieren Sie Ihren öffentlichen SSH-Schlüssel auf den entfernten Server. Sie können dies mit dem Befehl ssh-copy-id tun. Zum Beispiel:
+
+
+ssh-keygen
+
+ssh-copy-id user@remote_host
